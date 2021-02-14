@@ -45,15 +45,15 @@ jobs:
     - name: Create pages branch
       continue-on-error: true
       run: |
-                git config --global user.name “lexeg”
-                git config --global user.email “alexander.petrenko.develop@gmail.com”
+                git config --global user.name "lexeg"
+                git config --global user.email "alexander.petrenko.develop@gmail.com"
                 git checkout -B pages
                 
     - name: Clear pages branch
       continue-on-error: true
       run: |
                 git rm -rf .
-                git commit --allow-empty -m “root commit”
+                git commit --allow-empty -m "root commit"
                 git push -f origin pages
                 
     - name: Download build artifact
@@ -64,5 +64,5 @@ jobs:
     - name: Commit changes
       run: |
             git add .
-            git commit -m “publishing WASM”
+            git commit -m "publishing WASM"
             git push --set-upstream origin pages
