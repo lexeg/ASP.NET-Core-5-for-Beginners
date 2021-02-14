@@ -23,16 +23,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
-            with:
-              dotnet-version: ‘5.0’
+        with:
+          dotnet-version: ‘5.0’
             
-      -name: Publish app
-            run: dotnet publish -c Release ‘./Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj’
+      - name: Publish app
+        run: dotnet publish -c Release ‘./Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj’
             
-      -name: Save artifacts
-            uses: actions/upl
-            uses: actions/upload-artifact@v2
-            with:
+      - name: Save artifacts
+        uses: actions/upload-artifact@v2
+        with:
               name: myWASM
               path: ‘./Chapter 12/Chapter_12_GitHubActions_Examples/bin/Release/net5.0/publish/wwwroot’
       
