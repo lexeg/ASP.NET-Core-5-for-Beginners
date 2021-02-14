@@ -45,21 +45,21 @@ jobs:
       - name: Create pages branch
         continue-on-error: true
         run: |
-                git config --global user.name “GitHub Actions”
-                git config --global user.email “github-pages@email.com”
-                git checkout -B pages
+            git config --global user.name “GitHub Actions”
+            git config --global user.email “github-pages@email.com”
+            git checkout -B pages
                 
       - name: Clear pages branch
         continue-on-error: true
         run: |
-                git rm -rf .
-                git commit --allow-empty -m “root commit”
-                git push -f origin pages
+            git rm -rf .
+            git commit --allow-empty -m “root commit”
+            git push -f origin pages
                 
       - name: Download build artifact
         uses: actions/download-artifact@v2
         with:
-                name: myWASM
+            name: myWASM
                 
       - name: Commit changes
         run: |
