@@ -23,15 +23,16 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: ‘5.0’
+            with:
+              dotnet-version: ‘5.0’
             
-      - name: Publish app
-        run: dotnet publish -c Release ‘./Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj’
+      -name: Publish app
+            run: dotnet publish -c Release ‘./Chapter 12/Chapter_12_GitHubActions_Examples/Chapter12.csproj’
             
-      - name: Save artifacts
-        uses: actions/upload-artifact@v2
-        with:
+      -name: Save artifacts
+            uses: actions/upl
+            uses: actions/upload-artifact@v2
+            with:
               name: myWASM
               path: ‘./Chapter 12/Chapter_12_GitHubActions_Examples/bin/Release/net5.0/publish/wwwroot’
       
@@ -43,23 +44,23 @@ jobs:
       - uses: actions/checkout@v2
       
       - name: Create pages branch
-        continue-on-error: true
-        run: |
-            git config --global user.name “GitHub Actions”
-            git config --global user.email “github-pages@email.com”
-            git checkout -B pages
+            continue-on-error: true
+            run: |
+                git config --global user.name “GitHub Actions”
+                git config --global user.email “github-pages@email.com”
+                git checkout -B pages
                 
       - name: Clear pages branch
-        continue-on-error: true
-        run: |
-            git rm -rf .
-            git commit --allow-empty -m “root commit”
-            git push -f origin pages
+            continue-on-error: true
+            run: |
+                git rm -rf .
+                git commit --allow-empty -m “root commit”
+                git push -f origin pages
                 
       - name: Download build artifact
-        uses: actions/download-artifact@v2
-        with:
-            name: myWASM
+            uses: actions/download-artifact@v2
+            with:
+                name: myWASM
                 
       - name: Commit changes
         run: |
